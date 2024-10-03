@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Site</title>
+</head>
+<body>
+    {% block content %}
+    {% for item in item_list %}
+        <div class="row">
+            <div class="col-md-3 offset-md-2">
+                <img class="card-img my-2" height="200px" src="{{ item.item_image }}" alt=""/>
+            </div>
+            <div class="col-md-4">
+                <h3>{{ item.item_name }}</h3>
+                <h5>{{ item.item_description }}</h5>
+                <h6>${{ item.item_price }}</h6>
+                <h6>{{ item.user_name }}</h6>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'detail' item.id %}" class="btn btn-success my-3">Details</a>
+            </div>
+        </div>
+    {% endfor %}
+    {% endblock content %}
+</body>
+</html>
+
+
+# old code
+{#<ul>#}
+{#        <li>#}
+{#            <a href="{% url 'detail' item.id %}">{{ item.id }} | {{ item.item_name }}</a>#}
+{#        </li>#}
+{#    </ul>#}
